@@ -34,4 +34,11 @@ Rails.application.routes.draw do
 
   # 旧ルート設定 (必要に応じて)
   get '/microposts', to: 'static_pages#home'
+
+  # ここからlistsコントローラのルーティングを追加
+  resources :lists, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+
 end
+
+
+
