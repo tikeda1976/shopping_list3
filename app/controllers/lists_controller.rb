@@ -1,4 +1,3 @@
-
 class ListsController < ApplicationController
   # 一覧表示アクション
   def index
@@ -14,7 +13,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.save
-      redirect_to @list, notice: "リストが作成されました。"
+      redirect_to @list, notice: 'リストが作成されました。'
     else
       render :new
     end
@@ -24,8 +23,6 @@ class ListsController < ApplicationController
 
   # strong parameters: ユーザーからの入力を許可する
   def list_params
-    params.require(:list).permit(:name, :description)  # 必要に応じてカラムを変更
+    params.require(:list).permit(:name, :description) # 必要に応じてカラムを変更
   end
 end
-
-End
