@@ -53,6 +53,12 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_07_094319) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lists", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "microposts", force: :cascade do |t|
     t.text "content"
     t.integer "user_id", null: false
