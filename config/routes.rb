@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # 初期設定 root 'static_pages#home'
   root 'lists#index' # ホーム画面をリスト一覧に設定
   get  '/help',    to: 'static_pages#help'
   get  '/about',   to: 'static_pages#about'
@@ -13,6 +12,12 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+  resources :lists, only: %i[index create destroy] do
+    member do
+      get :detail, to: 'details#show' # 詳細画面
+    end
+    resources :items, only: %i[create destroy], controller: 'details'
+  end  
   resources :account_activations, only: [:edit]
   resources :microposts,          only: %i[create destroy]
   resources :relationships,       only: %i[create destroy]
